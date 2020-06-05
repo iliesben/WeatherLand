@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WeatherLand</string>
+    <string name="image_land_1">land image</string>
 </resources>
