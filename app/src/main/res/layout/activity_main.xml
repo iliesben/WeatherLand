@@ -6,7 +6,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/weather_land_1"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".city.MainActivity">
+
+    <fragment
+        android:id="@+id/cityFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.example.weatherland.city.CityFragment"
+        />
 
     <RelativeLayout
         android:id="@+id/weatherContainer"
@@ -31,11 +38,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/temperaturesText"
+                android:id="@+id/generalTemperaturesText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="25°/14°"
-                android:textColor="@color/colorBlakc"
+                android:text="@string/generalTemperatures"
+                android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
 
             <TextView
@@ -43,7 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-5dp"
-                android:text="Sunny"
+                android:text="@string/forecast"
+                android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -59,8 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="3dp"
-                android:text="FRIDAY"
-                android:textColor="@color/colorBlakc"
+                android:text="@string/day"
+                android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -77,19 +85,40 @@
                 android:id="@+id/sun"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:contentDescription="@string/sun_image"
                 app:srcCompat="@drawable/sun" />
 
             <TextView
                 android:id="@+id/temperatureNowText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="77°"
-                android:textColor="@color/colorBlakc"
-                android:textSize="74sp" />
+                android:text="@string/temperatureNow"
+                android:textColor="@color/colorBlack"
+                android:textSize="74sp"
+                />
 
         </LinearLayout>
 
     </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/weather_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="411dp"
+        android:layout_marginTop="731dp"
+        android:layout_marginEnd="411dp"
+        android:layout_marginBottom="731dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorWithe"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">WeatherLand</string>
     <string name="image_land_1">land image</string>
+    <string name="day">FRIDAY</string>
+    <string name="generalTemperatures">25°/14°</string>
+    <string name="forecast">Sunny</string>
+    <string name="temperatureNow">77°</string>
+    <string name="locations">Locations</string>
+    <string name="weather_hint">Enter your location</string>
+    <string name="sun_image">sun image</string>
+    <string name="createCityNameTitle">New city name ?</string>
+    <string name="createCityPositiveText">Create city</string>
+    <string name="createCityNegativeText">Cancel</string>
+    <string name="hintCityText">Paris , London ...</string>
+    <string name="couldNotCreateCity">Could not create a city</string>
+    <string name="menuCreateCity">Create city</string>
+    <string name="place_chosen">place chosen</string>
 </resources>
