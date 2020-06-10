@@ -11,6 +11,7 @@ import com.example.weatherland.R
 
 
 class CreateCityDialogFragment : DialogFragment() {
+
     interface CreateCityDialogListener{
         fun onDialogPositiveClick(cityName: String)
         fun onDialogNegativeClick()
@@ -30,14 +31,13 @@ class CreateCityDialogFragment : DialogFragment() {
                 .setView(input)
                 .setPositiveButton(R.string.createCityPositiveText,
                     DialogInterface.OnClickListener { _, _ ->
-                        listener?.onDialogPositiveClick(input.text.toString())
+                        listener?.onDialogPositiveClick(input.text.toString().capitalize())
                     })
                 .setNegativeButton(R.string.createCityNegativeText,
                     DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                         listener?.onDialogNegativeClick()
                     })
-
 
         return builder.create()
     }

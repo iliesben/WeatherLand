@@ -1,18 +1,42 @@
 <resources>
-    <string name="app_name">WeatherLand</string>
-    <string name="image_land_1">land image</string>
+    <string name="appName">WeatherLand</string>
+    <string name="imageLand1">land image</string>
     <string name="day">FRIDAY</string>
     <string name="generalTemperatures">25°/14°</string>
     <string name="forecast">Sunny</string>
     <string name="temperatureNow">77°</string>
     <string name="locations">Locations</string>
-    <string name="weather_hint">Enter your location</string>
-    <string name="sun_image">sun image</string>
+    <string name="weatherHint">Enter your location</string>
+    <string name="sunImage">sun image</string>
     <string name="createCityNameTitle">New city name ?</string>
     <string name="createCityPositiveText">Create city</string>
     <string name="createCityNegativeText">Cancel</string>
     <string name="hintCityText">Paris , London ...</string>
     <string name="couldNotCreateCity">Could not create a city</string>
     <string name="menuCreateCity">Create city</string>
-    <string name="place_chosen">place chosen</string>
+    <string name="placeChosen">place chosen</string>
+
+    <string name="deleteCityTitle">Do you really want to delete %1$s ?</string>
+    <string name="deleteCityPositive">Delete city</string>
+    <string name="deleteCityNegative">Cancel</string>
+    <string name="cityNotCreate">Could not create city</string>
+    <string name="cityDeleted">%1$s has been deleted</string>
+    <string name="cityNotDelete">Could not delete %1$s</string>
+    <string name="CouldNotLoadWeather">Could not load city weather</string>
+
+    <!-- WeatherOld fragment -->
+    <string name="weather_temperature_label">Temperature:</string>
+    <string name="weatherHumidity">Humidity:</string>
+    <string name="weatherPressure">Pressure:</string>
+    <string name="weatherTemperatureValue">%1$d°C</string>
+    <string name="weatherHumidityValue">%1$d %%</string>
+    <string name="weatherTemperatureMaxMin">%1$d° / %2$d°</string>
+    <string name="weatherPressureValue">%1$d hPa</string>
+    <string name="cityName">this city</string>
+    <string name="sunriseValue">04:44</string>
+    <string name="sunriseText">Sunrise</string>
+    <string name="sunsetText">Sunset</string>
+    <string name="humidityDefault">20%</string>
+    <string name="pressureDefault">100</string>
+
 </resources>

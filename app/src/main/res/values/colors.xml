@@ -6,4 +6,5 @@
     <color name="colorBlack">#000000</color>
     <color name="colorWithe">#FFFFFF</color>
     <color name="transparentWhite">#B3FFFFFF</color>
+    <color name="cardViewBg">#7098C6F7</color>
 </resources>
