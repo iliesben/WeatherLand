@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.weatherland.App
 import com.example.weatherland.R
 import com.example.weatherland.openweathermap.WeatherWrapper
@@ -36,7 +37,7 @@ class WeatherFragment : Fragment() {
 
     private val weatherService = App.weatherService
     private lateinit var cityName: String
-
+    private lateinit var refreshLayout: SwipeRefreshLayout
     private lateinit var city: TextView
     private lateinit var weatherIcon: ImageView
     private lateinit var weatherDescription: TextView
@@ -56,6 +57,7 @@ class WeatherFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_weather, container, false)
 
+        refreshLayout = view.findViewById(R.id.swiperWeather)
         city = view.findViewById(R.id.cityNameText)
         weatherIcon = view.findViewById(R.id.weatherIcon)
         weatherDescription = view.findViewById(R.id.forecastText)
@@ -67,13 +69,19 @@ class WeatherFragment : Fragment() {
         sunrise = view.findViewById(R.id.sunriseValue)
         sunset = view.findViewById(R.id.sunsetValue)
         weatherConstraint = view.findViewById(R.id.weatherConstraintLayout)
+
+        refreshLayout.setOnRefreshListener { refreshWeather() }
+
         return view
     }
 
+    private fun refreshWeather() {
+        updateWeatherForCity(cityName)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (activity?.intent!!.hasExtra(EXTRA_CITY_NAME)){
+        if (this.activity?.intent!!.hasExtra(EXTRA_CITY_NAME)){
             updateWeatherForCity(activity!!.intent.getStringExtra(EXTRA_CITY_NAME))
         }
     }
@@ -82,19 +90,25 @@ class WeatherFragment : Fragment() {
     private fun updateWeatherForCity(cityName: String) {
         this.cityName = cityName
 
-        val call = weatherService.getWeather("$cityName")
+        if (!refreshLayout.isRefreshing) {
+            refreshLayout.isRefreshing = true
+        }
+
+        val call = weatherService.getWeather(cityName)
         call.enqueue(object: Callback<WeatherWrapper> {
             override fun onFailure(call: Call<WeatherWrapper>, t: Throwable) {
                 Log.e("GetDataFailure", "could not load city currentObservation", t)
                 Toast.makeText(activity,
                     getString(R.string.CouldNotLoadWeather),
                     Toast.LENGTH_SHORT).show()
+                    refreshLayout.isRefreshing = false
             }
 
             override fun onResponse(
                 call: Call<WeatherWrapper>,
                 response: Response<WeatherWrapper>
             ) {
+                refreshLayout.isRefreshing = false
                 response?.body()?.let {
                     val weather = dataToWeather(it)
                     updateDate(weather)
@@ -137,15 +151,15 @@ class WeatherFragment : Fragment() {
         else if(description == "Snow") mainImage = "weather_snow_"
 
         if(timer?.toInt()!! in 6..12) mainTime = "morning"
-        else if(timer?.toInt()!! in 13..17) mainTime = "afternoon"
-        else if(timer?.toInt()!! in 18..20) mainTime = "sunset"
-        else if(timer?.toInt()!! in 21..23) mainTime = "evening"
-        else if(timer?.toInt()!! in 0..5 || timer?.toInt()!!  == 24) mainTime = "nightà"
+        else if(timer.toInt() in 13..17) mainTime = "afternoon"
+        else if(timer.toInt() in 18..20) mainTime = "sunset"
+        else if(timer.toInt() in 21..23) mainTime = "evening"
+        else if(timer.toInt() in 0..5 || timer.toInt() == 24) mainTime = "night"
 
 
         //else if(timer == "")
 
-        var backgroundImage = "$mainImage$mainTime"
+        val backgroundImage = "$mainImage$mainTime"
 
         Log.i("mainDescription" , "$timer")
 

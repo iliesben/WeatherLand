@@ -61,7 +61,12 @@ class CityFragment : Fragment(), CityAdapter.CityItemListener {
                 showCreateCityDialog()
                 return true
             }
+            R.id.locationCreate -> {
+
+                return true
+            }
         }
+
         return super.onOptionsItemSelected(item)
     }
 
@@ -122,7 +127,6 @@ class CityFragment : Fragment(), CityAdapter.CityItemListener {
         if (database.deleteCity(city)) {
             cities.remove(city)
             adapter.notifyDataSetChanged()
-            selectFirstCity()
             context!!.toast(getString(R.string.cityDeleted, city.name))
         } else {
             context!!.toast(getString(R.string.cityNotDelete, city.name))

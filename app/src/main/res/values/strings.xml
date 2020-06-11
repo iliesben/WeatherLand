@@ -38,5 +38,7 @@
     <string name="sunsetText">Sunset</string>
     <string name="humidityDefault">20%</string>
     <string name="pressureDefault">100</string>
+    <string name="addLocalition">add localition</string>
+    <string name="permissionNotAllowed">permission not allowed</string>
 
 </resources>

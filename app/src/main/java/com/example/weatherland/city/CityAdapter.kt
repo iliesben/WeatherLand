@@ -13,8 +13,8 @@ class CityAdapter(private val cities: List<City>,
     : RecyclerView.Adapter<CityAdapter.ViewHolder>(), View.OnClickListener {
 
     interface CityItemListener {
-        fun onCitySelected(city: City)
         fun onCityDeleted(city: City)
+        fun onCitySelected(city: City)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
